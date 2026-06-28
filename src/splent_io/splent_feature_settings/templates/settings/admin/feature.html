@@ -1,0 +1,58 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ schema.title }} settings{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">{{ schema.title }} <small class="text-muted">settings</small></h1>
+    <a href="{{ url_for('settings.admin_index') }}" class="btn btn-sm btn-outline-secondary">All settings</a>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ 'danger' if category == 'danger' else 'success' }} py-2">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+<form method="POST">
+    <div class="card">
+        <div class="card-body">
+            {% for f in schema.fields %}
+            <div class="mb-3">
+                {% if f.type == 'bool' %}
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch"
+                           name="{{ f.key }}" id="{{ f.key }}" {% if cfg[f.key] %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ f.key }}">{{ f.label }}</label>
+                </div>
+                {% elif f.type == 'select' %}
+                <label class="form-label" for="{{ f.key }}">{{ f.label }}</label>
+                <select class="form-select" name="{{ f.key }}" id="{{ f.key }}">
+                    {% for value, label in f.options %}
+                    <option value="{{ value }}" {% if cfg[f.key] == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+                {% elif f.type == 'color' %}
+                <label class="form-label" for="{{ f.key }}">{{ f.label }}</label>
+                <input type="color" class="form-control form-control-color"
+                       name="{{ f.key }}" id="{{ f.key }}" value="{{ cfg[f.key] }}">
+                {% elif f.type == 'int' %}
+                <label class="form-label" for="{{ f.key }}">{{ f.label }}</label>
+                <input type="number" class="form-control"
+                       name="{{ f.key }}" id="{{ f.key }}" value="{{ cfg[f.key] }}">
+                {% else %}
+                <label class="form-label" for="{{ f.key }}">{{ f.label }}</label>
+                <input type="text" class="form-control"
+                       name="{{ f.key }}" id="{{ f.key }}" value="{{ cfg[f.key] }}">
+                {% endif %}
+                {% if f.help %}<small class="text-muted d-block mt-1">{{ f.help }}</small>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <span class="text-muted small">Changes apply immediately.</span>
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

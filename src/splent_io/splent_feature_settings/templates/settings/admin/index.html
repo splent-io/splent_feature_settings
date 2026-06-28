@@ -1,0 +1,25 @@
+{% extends "base_template.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-2">Settings</h1>
+<p class="text-muted">Configure the behaviour of installed features.</p>
+
+{% if not schemas %}
+<p class="text-muted">No configurable features installed.</p>
+{% endif %}
+
+<div class="row g-3">
+    {% for s in schemas %}
+    <div class="col-md-4 col-sm-6">
+        <a class="card text-decoration-none h-100" href="{{ url_for('settings.admin_feature', feature=s.feature) }}">
+            <div class="card-body d-flex align-items-center gap-2">
+                <i class="align-middle" data-feather="{{ s.icon }}"></i>
+                <span class="h6 mb-0">{{ s.title }}</span>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
