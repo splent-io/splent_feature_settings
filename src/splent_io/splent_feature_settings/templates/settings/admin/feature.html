@@ -47,11 +47,24 @@
                        name="{{ f.key }}" id="{{ f.key }}" value="{{ cfg[f.key] }}">
                 {% endif %}
                 {% if f.help %}<small class="text-muted d-block mt-1">{{ f.help }}</small>{% endif %}
+                {# Where the value in the box came from. Without this a field
+                   showing something nobody here typed reads as a mystery,
+                   and the answer is usually the product's own .env. #}
+                {% if sources[f.key] == 'environment' %}
+                <small class="text-muted d-block mt-1">
+                    Currently set by the product configuration ({{ f.env or (schema.feature ~ '_' ~ f.key) | upper }}).
+                    Changing it here overrides that.
+                </small>
+                {% elif sources[f.key] == 'panel' %}
+                <small class="text-muted d-block mt-1">
+                    Set here, overriding the product configuration.
+                </small>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
         <div class="card-footer d-flex justify-content-between align-items-center">
-            <span class="text-muted small">Changes apply immediately.</span>
+            <span class="text-muted small">Changes apply immediately. A field left as it is keeps following the product configuration.</span>
             <button class="btn btn-primary" type="submit">Save</button>
         </div>
     </div>
