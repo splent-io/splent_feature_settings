@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "splent_feature_settings"
-version = "0.3.0"
+version = "0.3.1"
 readme = "README.md"
 requires-python = ">=3.13"
 
@@ -41,7 +41,7 @@ commands   = ["hello"]
 hooks      = ["layout.authenticated_sidebar"]
 services   = ["SettingsService"]
 signals    = []
-translations = []
+translations = ["es"]
 docker     = []
 
 [tool.splent.contract.requires]
