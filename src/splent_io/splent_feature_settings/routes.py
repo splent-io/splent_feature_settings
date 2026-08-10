@@ -14,6 +14,7 @@ from flask import (
     request,
     url_for,
 )
+from flask_babel import gettext as _
 from flask_login import login_required
 
 from splent_io.splent_feature_settings import settings_bp
@@ -73,7 +74,7 @@ def admin_feature(feature):
             values[key] = submitted
 
         service_proxy("SettingsService").set_many(values)
-        flash(f"{schema['title']} settings saved.", "success")
+        flash(_("%(title)s settings saved.", title=schema["title"]), "success")
         return redirect(url_for("settings.admin_feature", feature=feature))
     return render_template(
         "settings/admin/feature.html",

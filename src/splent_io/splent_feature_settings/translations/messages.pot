@@ -1,0 +1,70 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-08-10 15:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: src/splent_io/splent_feature_settings/hooks.py:21
+#: src/splent_io/splent_feature_settings/templates/settings/admin/index.html:3
+#: src/splent_io/splent_feature_settings/templates/settings/admin/index.html:6
+#: src/splent_io/splent_feature_settings/templates/settings/index.html:3
+msgid "Settings"
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/routes.py:77
+#, python-format
+msgid "%(title)s settings saved."
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:3
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:7
+#, python-format
+msgid "%(title)s settings"
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:8
+msgid "All settings"
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:55
+#, python-format
+msgid ""
+"Currently set by the product configuration (%(env)s). Changing it here "
+"overrides that."
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:60
+msgid "Set here, overriding the product configuration."
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:67
+msgid ""
+"Changes apply immediately. A field left as it is keeps following the "
+"product configuration."
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/feature.html:68
+msgid "Save"
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/index.html:7
+msgid "Configure the behaviour of installed features."
+msgstr ""
+
+#: src/splent_io/splent_feature_settings/templates/settings/admin/index.html:10
+msgid "No configurable features installed."
+msgstr ""
+

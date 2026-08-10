@@ -3,6 +3,7 @@ lists every feature that declared a settings schema (via register_settings).
 """
 
 from flask import request, url_for
+from flask_babel import gettext as _
 
 from splent_framework.hooks.template_hooks import register_template_hook
 
@@ -17,7 +18,7 @@ def settings_admin_link():
         f'<li class="sidebar-item {active}">'
         f'<a class="sidebar-link" href="{url_for("settings.admin_index")}">'
         '<i class="align-middle" data-feather="settings"></i> '
-        '<span class="align-middle">Settings</span>'
+        f'<span class="align-middle">{_("Settings")}</span>'
         "</a>"
         "</li>"
     )

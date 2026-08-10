@@ -1,13 +1,13 @@
 {% extends "base_template.html" %}
 
-{% block title %}Settings{% endblock %}
+{% block title %}{{ _('Settings') }}{% endblock %}
 
 {% block content %}
-<h1 class="h3 mb-2">Settings</h1>
-<p class="text-muted">Configure the behaviour of installed features.</p>
+<h1 class="h3 mb-2">{{ _('Settings') }}</h1>
+<p class="text-muted">{{ _('Configure the behaviour of installed features.') }}</p>
 
 {% if not schemas %}
-<p class="text-muted">No configurable features installed.</p>
+<p class="text-muted">{{ _('No configurable features installed.') }}</p>
 {% endif %}
 
 <div class="row g-3">

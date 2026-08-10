@@ -1,11 +1,11 @@
 {% extends "base_template.html" %}
 
-{% block title %}{{ schema.title }} settings{% endblock %}
+{% block title %}{{ _('%(title)s settings', title=schema.title) }}{% endblock %}
 
 {% block content %}
 <div class="d-flex flex-column align-items-start gap-2 mb-4">
-    <h1 class="h3 mb-0">{{ schema.title }} <small class="text-muted">settings</small></h1>
-    <a href="{{ url_for('settings.admin_index') }}" class="btn btn-sm btn-outline-secondary">All settings</a>
+    <h1 class="h3 mb-0">{{ _('%(title)s settings', title=schema.title) }}</h1>
+    <a href="{{ url_for('settings.admin_index') }}" class="btn btn-sm btn-outline-secondary">{{ _('All settings') }}</a>
 </div>
 
 {% with messages = get_flashed_messages(with_categories=true) %}
@@ -52,20 +52,20 @@
                    and the answer is usually the product's own .env. #}
                 {% if sources[f.key] == 'environment' %}
                 <small class="text-muted d-block mt-1">
-                    Currently set by the product configuration ({{ f.env or (schema.feature ~ '_' ~ f.key) | upper }}).
-                    Changing it here overrides that.
+                    {{ _('Currently set by the product configuration (%(env)s). Changing it here overrides that.',
+                         env=f.env or (schema.feature ~ '_' ~ f.key) | upper) }}
                 </small>
                 {% elif sources[f.key] == 'panel' %}
                 <small class="text-muted d-block mt-1">
-                    Set here, overriding the product configuration.
+                    {{ _('Set here, overriding the product configuration.') }}
                 </small>
                 {% endif %}
             </div>
             {% endfor %}
         </div>
         <div class="card-footer d-flex justify-content-between align-items-center">
-            <span class="text-muted small">Changes apply immediately. A field left as it is keeps following the product configuration.</span>
-            <button class="btn btn-primary" type="submit">Save</button>
+            <span class="text-muted small">{{ _('Changes apply immediately. A field left as it is keeps following the product configuration.') }}</span>
+            <button class="btn btn-primary" type="submit">{{ _('Save') }}</button>
         </div>
     </div>
 </form>
